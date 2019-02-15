@@ -90,7 +90,13 @@ public class CalculatorTest {
      */
     public void calculateThreeTokensTestValidSubtract() throws AssertException
     {
-        // TODO: complete this test...
+    	try {
+    		int expected = Calculator.calculateThreeTokens(new String[] {"12", "-", "6"});
+    		int actual = 6;
+    		Assert.assertEquals(expected, actual);
+    		} catch (Exception e) {
+    		Assert.fail("Legal Expression threw an Exception" + e.getMessage());
+    	}
     }
 
     /**
