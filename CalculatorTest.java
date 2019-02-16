@@ -162,7 +162,7 @@ public class CalculatorTest {
         	} catch (CalculatorException e) {
         		
         	} catch (Exception e) {
-        	Assert.fail("Unexpected Exception (not CalculatorException)");
+        	Assert.fail("Unexpected Exception (not CalculatorException) caught");
         	}
         }
     
@@ -173,7 +173,7 @@ public class CalculatorTest {
     public void executeTestValidQuit() throws AssertException
     {
      try {
-    	 Calculator.parseAndExecute("quit");
+    	 Calculator.execute(new String[] {"quit"});
      } catch (Exception e) {
     	 Assert.fail("Unexpected Exception");
      }
@@ -235,11 +235,22 @@ public class CalculatorTest {
      */
     public void executeTestInvalidTokenLength() throws AssertException
     {
-        // Token length is 0:
-        // TODO: complete this test...
+        
+    	try {
+    		Calculator.execute(new String[0]);
+    	} catch (CalculatorException e) {
+    		Assert.assertEquals("Illegal Token Length", e.getMessage());
+    	} catch (Exception e) {
+    		Assert.fail("Unexpected Exception (Not CalculatorException) caught");
+    	}
 
-        // Token length is > 3:
-        // TODO: complete this test...
+        try {
+        	Calculator.execute(new String[] {"pie", "deer", "apple", "drinks","pineapple"});
+        } catch (CalculatorException e) {
+        	Assert.assertEquals("Illegal Token Length", e.getMessage());
+        } catch (Exception e) {
+        	Assert.fail("UNexpected Exception (not CalculatorException) caught");
+        }
     }
 
     /**
