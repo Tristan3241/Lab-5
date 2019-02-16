@@ -238,6 +238,7 @@ public class CalculatorTest {
         
     	try {
     		Calculator.execute(new String[0]);
+    		Assert.fail("didnt throw exception");
     	} catch (CalculatorException e) {
     		Assert.assertEquals("Illegal Token Length", e.getMessage());
     	} catch (Exception e) {
@@ -246,6 +247,7 @@ public class CalculatorTest {
 
         try {
         	Calculator.execute(new String[] {"pie", "deer", "apple", "drinks","pineapple"});
+        	Assert.fail("Didnt throw exception");
         } catch (CalculatorException e) {
         	Assert.assertEquals("Illegal Token Length", e.getMessage());
         } catch (Exception e) {
@@ -276,7 +278,9 @@ public class CalculatorTest {
      */
     public void parseAndExecuteTestDivideByZero() throws AssertException
     {
-        // TODO: complete this test...
+    	String result = Calculator.parseAndExecute("6 / 0");
+    	Assert.assertEquals("Attempted to divide by 0. Please try again.", result);
+    	
     }
 
     /**
@@ -284,7 +288,8 @@ public class CalculatorTest {
      */
     public void parseAndExecuteTestInvalidNumber() throws AssertException
     {
-        // TODO: complete this test...
+		String result = Calculator.parseAndExecute("foo + 9");
+		Assert.assertEquals("Input number cannot be parsed to an int. Please try again.", result);
     }
 
     /**
