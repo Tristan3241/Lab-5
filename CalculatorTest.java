@@ -156,15 +156,27 @@ public class CalculatorTest {
      */
     public void calculateThreeTokensTestInvalidCommand() throws AssertException
     {
-        // TODO: complete this test...
-    }
+        try {
+        	Calculator.calculateThreeTokens(new String[] {"5", "_", "6"});
+        	Assert.fail("Illegal Expression did not throw an Exception");
+        	} catch (CalculatorException e) {
+        		
+        	} catch (Exception e) {
+        	Assert.fail("Unexpected Exception (not CalculatorException)");
+        	}
+        }
+    
 
     /**
      * Test correct execution of command (one token - only can be "quit"):
      */
     public void executeTestValidQuit() throws AssertException
     {
-        // TODO: complete this test...
+     try {
+    	 Calculator.parseAndExecute("quit");
+     } catch (Exception e) {
+    	 Assert.fail("Unexpected Exception");
+     }
     }
 
     /**
