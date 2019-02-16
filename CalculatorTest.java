@@ -200,7 +200,12 @@ public class CalculatorTest {
      */
     public void executeTestValidThreeTokens() throws AssertException
     {
-        // TODO: complete this test...
+        try {
+        	int result = Calculator.execute(new String[] {"3", "+", "6"});
+        	Assert.assertEquals(9, result);
+        	} catch (Exception e) {
+        		Assert.fail("Legal expression threw an Exception: " + e.getMessage());
+        }
     }
 
     /**
