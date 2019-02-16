@@ -290,6 +290,9 @@ public class CalculatorTest {
     {
 		String result = Calculator.parseAndExecute("foo + 9");
 		Assert.assertEquals("Input number cannot be parsed to an int. Please try again.", result);
+		
+		String actual = Calculator.parseAndExecute("Gavel 10");
+		Assert.assertEquals("Calculator Exception, message is: Illegal Command", actual);
     }
 
     /**
