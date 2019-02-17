@@ -309,6 +309,8 @@ public class CalculatorTest {
      */
     public void parseAndExecuteTestInvalidTokenLength() throws AssertException
     {
-        // TODO: complete this test...
+       String result = Calculator.parseAndExecute("9 + 10 +");
+        Assert.assertEquals("Calculator Exception, message is: Illegal Token Length", result);
+        
     }
 }
